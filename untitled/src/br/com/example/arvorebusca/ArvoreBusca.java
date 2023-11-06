@@ -24,20 +24,20 @@ public class ArvoreBusca {
         return raiz;
     }
 
-    public static int somaIntervaloBusca(NoArvore raiz, int inicial, int finalValue) {
-        return somaIntervaloBuscaRecursivo(raiz, inicial, finalValue);
+    public static int somaIntervaloBusca(NoArvore raiz, int inicial, int valorFinal) {
+        return somaIntervaloBuscaRecursivo(raiz, inicial, valorFinal);
     }
 
-    private static int somaIntervaloBuscaRecursivo(NoArvore raiz, int inicial, int finalValue) {
+    private static int somaIntervaloBuscaRecursivo(NoArvore raiz, int inicial, int valorFinal) {
         if (raiz == null) {
             return 0;
         }
-        if (inicial <= raiz.getValor() && raiz.getValor() <= finalValue) {
-            return raiz.getValor() + somaIntervaloBuscaRecursivo(raiz.getEsquerda(), inicial, finalValue) + somaIntervaloBuscaRecursivo(raiz.getDireita(), inicial, finalValue);
+        if (inicial <= raiz.getValor() && raiz.getValor() <= valorFinal) {
+            return raiz.getValor() + somaIntervaloBuscaRecursivo(raiz.getEsquerda(), inicial, valorFinal) + somaIntervaloBuscaRecursivo(raiz.getDireita(), inicial, valorFinal);
         } else if (raiz.getValor() < inicial) {
-            return somaIntervaloBuscaRecursivo(raiz.getDireita(), inicial, finalValue);
+            return somaIntervaloBuscaRecursivo(raiz.getDireita(), inicial, valorFinal);
         } else {
-            return somaIntervaloBuscaRecursivo(raiz.getEsquerda(), inicial, finalValue);
+            return somaIntervaloBuscaRecursivo(raiz.getEsquerda(), inicial, valorFinal);
         }
     }
 }

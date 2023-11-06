@@ -4,19 +4,25 @@ import java.util.Scanner;
 
 public class ArvoreBusca {
 
-    public static NoArvore construirBusca(int[] valores) {
+    public static NoArvore construirBusca(String[] valores) {
         NoArvore raiz = null;
-        for (int valor : valores) {
-            raiz = inserirBusca(raiz, valor);
+        for (String valor : valores) {
+            if (valor.trim().equals("")) {
+                raiz = inserirBusca(raiz, null);
+            } else {
+                raiz = inserirBusca(raiz, Integer.parseInt(valor));
+            }
         }
         return raiz;
     }
 
-    public static NoArvore inserirBusca(NoArvore raiz, int valor) {
+    public static NoArvore inserirBusca(NoArvore raiz, Integer valor) {
         if (raiz == null) {
             return new NoArvore(valor);
         }
-        if (valor < raiz.getValor()) {
+        if (valor == null) {
+            raiz.setEsquerda(inserirBusca(raiz.getEsquerda(), null));
+        } else if (valor < raiz.getValor()) {
             raiz.setEsquerda(inserirBusca(raiz.getEsquerda(), valor));
         } else {
             raiz.setDireita(inserirBusca(raiz.getDireita(), valor));

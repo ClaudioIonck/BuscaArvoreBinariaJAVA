@@ -8,8 +8,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite os valores da arvore separados por espacos: ");
-        int[] valores = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        System.out.println(
+                "Digite os valores da arvore separados por espacos (valores nulos são necessários utilizar um espaço ex.:10 5 15 3 7   18): ");
+        String[] valores = scanner.nextLine().trim().split(" +");
 
         NoArvore raiz = ArvoreBusca.construirBusca(valores);
 
@@ -21,6 +22,7 @@ public class Main {
 
         int resultado = ArvoreBusca.somaIntervaloBusca(raiz, inicial, valorFinal);
 
-        System.out.println(String.format("A soma dos valores no intervalo [%d, %d] é %d.", inicial, valorFinal, resultado));
+        System.out.println(
+                String.format("A soma dos valores no intervalo [%d, %d] é %d.", inicial, valorFinal, resultado));
     }
 }
